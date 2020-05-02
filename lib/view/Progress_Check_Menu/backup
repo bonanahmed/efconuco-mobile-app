@@ -1,0 +1,189 @@
+static Future<void> createOrUpdateDataListPacking(
+    String id, {
+    String dataId,
+    String dateIn,
+    String customer,
+    String type,
+    String partNumber,
+    String serialNumber,
+    String customerInfoAlarm,
+    String physicCondition,
+    String fanInternal,
+    String fanExternal,
+    String urlPhotoFront,
+    String urlPhotoBack,
+    String dateTrialCheck,
+    String alarmActual,
+    String urlPhotoAlarmCheckMonitor,
+    String urlPhotoAlarmCheckModul,
+    String dateWash,
+    String urlPhotoWash,
+    String datePacking,
+    String urlPhotoPacking,
+  }) async {
+    await dataRepairRef.document(id).setData({
+      'ID': dataId,
+      'Tanggal_Masuk': dateIn,
+      'Customer': customer,
+      'Type': type,
+      'Part_Number': partNumber,
+      'Serial_Number': serialNumber,
+      'Info_Alarm_dari_Customer': customerInfoAlarm,
+      'Kondisi_Fisik': physicCondition,
+      'Fan_Internal': fanInternal,
+      'Fan_Eksternal': fanExternal,
+      'Url_Foto_Depan': urlPhotoFront,
+      'Url_Foto_Belakang': urlPhotoBack,
+      'Tanggal_Trial_Check': dateTrialCheck,
+      'Alarm_Aktual': alarmActual,
+      'Url_Foto_Alarm_Monitor': urlPhotoAlarmCheckMonitor,
+      'Url_Foto_Alarm_Modul': urlPhotoAlarmCheckModul,
+      'Tanggal_Cuci': dateWash,
+      'Url_Foto_Cuci': urlPhotoWash,
+      'Tanggal_Packing': datePacking,
+      'Url_Foto_Packing': urlPhotoPacking,
+    }, merge: false);
+  }
+
+  PartInData partInData;
+TrialCheckData trialCheckData;
+WashData washData;
+PackingData packingData;
+
+String customer = partInData.dataCustomer;
+String datePartIn = partInData.dataDateIn;
+String type = partInData.dataType;
+String partNumber = partInData.dataPartNumber;
+String serialNumber = partInData.dataSerialNumber;
+String alarmCustomer = partInData.dataInfoAlarmCustomer;
+String physicCondition = partInData.dataPhysicCondition;
+String fanInternal = partInData.dataFanInternal;
+String fanEksternal = partInData.dataFanExternal;
+String photoFront = partInData.dataUrlPhotoFront;
+String photoBack = partInData.dataUrlPhotoBack;
+
+String dateTrialCheck = trialCheckData.dataDateTrialCheck;
+String alarmTrialCheck = trialCheckData.dataAlarmActual;
+String photoTrialCheckMonitor = trialCheckData.dataUrlPhotoAlarmMonitor;
+String photoTrialCheckModul = trialCheckData.dataUrlPhotoAlarmModul;
+
+String dateWash = washData.dataDateWash;
+String photoWash = washData.dataUrlPhotoWash;
+
+int repairCount = 0;
+List<dynamic> indexRepairs = [];
+List<String> dateRepair = [];
+List<String> brokenComponent = [];
+List<String> photoBrokenComponent = [];
+List<String> componentPosition = [];
+List<String> lotComponent = [];
+List<String> photoComponentPosition = [];
+
+int trialCount = 0;
+List<String> indexTrial = [];
+List<String> dateTrial = [];
+List<String> statusTrial = [];
+List<String> alarmTrial = [];
+List<String> photoTrialMonitor = [];
+List<String> photoTrialModul = [];
+
+String datePacking = packingData.dataDatePacking;
+String photoPacking = packingData.dataUrlPhotoPacking;
+
+class WholeData extends StatefulWidget {
+  @override
+  _WholeDataState createState() => _WholeDataState();
+}
+
+class _WholeDataState extends State<WholeData> {
+  // void initState() {
+  //   super.initState();
+  //   print('mulai');
+  // }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Keseluruhan Data')),
+      body: Container(
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              RaisedButton(
+                  child: Text('Convert to Excel'),
+                  onPressed: () {
+                    print(customer);
+                    // var firestore = Firestore.instance;
+                    // QuerySnapshot repair = await firestore
+                    //     .collection('Data Repair')
+                    //     .document(dataId)
+                    //     .collection('Proses Repair')
+                    //     .document('Repair')
+                    //     .collection('Repair List')
+                    //     .getDocuments();
+                    // // print(repair.documents[0].data['index']);
+                    // repairCount = repair.documents.length;
+                    // for (int i = 0; i < repair.documents.length; i++) {
+                    //   // print(repair.documents[i].data['index']);
+                    //   indexRepair.add(repair.documents[i].data['index']);
+                    //   print(indexRepair[i]);
+                    // }
+                    // setState(() {
+                    //   DatabaseList.createOrUpdateDataList(
+                    //     dataId,
+                    //     dataId: dataId,
+                    //     dateIn: datePartIn,
+                    //     customer: customer,
+                    //     type: type,
+                    //     partNumber: partNumber,
+                    //     serialNumber: serialNumber,
+                    //     customerInfoAlarm: alarmCustomer,
+                    //     physicCondition: physicCondition,
+                    //     fanInternal: fanInternal,
+                    //     fanExternal: fanEksternal,
+                    //     urlPhotoFront: photoFront,
+                    //     urlPhotoBack: photoBack,
+                    //     dateTrialCheck: dateTrialCheck,
+                    //     alarmActual: alarmTrialCheck,
+                    //     urlPhotoAlarmCheckMonitor: photoTrialCheckMonitor,
+                    //     urlPhotoAlarmCheckModul: photoTrialCheckModul,
+                    //     dateWash: dateWash,
+                    //     urlPhotoWash: photoWash,
+                    //     datePacking: datePacking,
+                    //     urlPhotoPacking: photoPacking
+                    //   );
+                    // });
+
+                    // for (int i = 0; i < repairCount; i++) {
+                    //   DatabaseList.createOrUpdateDataListRepair(
+                    //     indexRepair: indexRepair[i],
+                    //     // dateRepair: dateRepair[i],
+                    //     // brokenComponent: brokenComponent[i],
+                    //     // urlPhotoComponent: photoBrokenComponent[i],
+                    //     // brokenComponentPosition: componentPosition[i],
+                    //     // lotComponent: lotComponent[i],
+                    //     // urlPhotoTrack: photoComponentPosition[i],
+                    //   );
+                    // }
+                    // }
+                    // for (int i = 0; i < trialCount; i++) {
+                    //   DatabaseList.createOrUpdateDataListTrial(
+                    //     indexTrial: indexTrial[i],
+                    //     dateTrial: dateTrial[i],
+                    //     alarmAfterRepair: alarmTrial[i],
+                    //     urlPhotoAlarmAfterRepairMonitor:
+                    //         photoTrialMonitor[i],
+                    //     urlPhotoAlarmAfterRepairModul: photoTrialModul[i],
+                    //     statusRepair: statusTrial[i],
+                    //   );
+                    // }
+                    // });
+                  }),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

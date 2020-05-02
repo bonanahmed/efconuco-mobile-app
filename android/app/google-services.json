@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "171056156082",
+    "firebase_url": "https://efconuco-mobile-app.firebaseio.com",
+    "project_id": "efconuco-mobile-app",
+    "storage_bucket": "efconuco-mobile-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171056156082:android:54bbbf5fdfb270b44f28ab",
+        "android_client_info": {
+          "package_name": "com.example.efconuco_mobile_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "171056156082-2p7fmnrmlije2rh1hm7vjr40di2i20e5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl1KWbmBfsp8YXAk0gVDz8P789-tiO1oo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "171056156082-2p7fmnrmlije2rh1hm7vjr40di2i20e5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
